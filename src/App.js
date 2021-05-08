@@ -1,4 +1,5 @@
 import './App.css';
+import PropTypes from 'prop-types';
 // import React, * as react from 'react'
 
 // class app extends component {
@@ -11,7 +12,6 @@ import './App.css';
 //     )
 //   }
 // }
-
 const App = () => {
   const profiles = [
     { name: "Taro", age: 10},
@@ -31,8 +31,12 @@ const App = () => {
 const User = (props) => {
   return <div>Hi, i am {props.name} and {props.age} years old</div>
 }
-User.defaultProps = {
-  age: 0
+// User.defaultProps = {
+//   age: 0
+// }
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 export default App;
 
