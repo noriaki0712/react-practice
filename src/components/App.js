@@ -1,4 +1,4 @@
-import './App.css';
+import '../App.css';
 // import PropTypes from 'prop-types';
 // jsxを仕様する場合は下記の記述が必要(React.componentを使ってくれる)
 // import React, { Component } from 'react';
@@ -18,38 +18,49 @@ import './App.css';
 
 
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-const App = () => (<Counter></Counter>)
+import { increment, decrement} from '../actions'
 
-class Counter extends Component {
-constructor(props) {
-  super(props)
+// const App = () => (<Counter></Counter>)
 
-  this.state = {
-    count: 0
+class App extends Component {
+// constructor(props) {
+//   super(props)
 
-  }
-}
-handlePlusButton = () => {
-  const count = this.state.count
-  this.setState({ count: count + 1})
-}
-handleMinusButton = () => {
-  const count = this.state.count
-  this.setState({ count: count - 1 })
-}
+//   this.state = {
+//     count: 0
+
+//   }
+// }
+// handlePlusButton = () => {
+//   const count = this.state.count
+//   this.setState({ count: count + 1})
+// }
+// handleMinusButton = () => {
+//   const count = this.state.count
+//   this.setState({ count: count - 1 })
+// }
   render() {
+    const props = this.props
     return(
     <React.Fragment>
-      <div>count: {this.state.count}</div>
-      <button onClick={this.handlePlusButton}>+1</button>
-      <button onClick={this.handleMinusButton}>-1</button>
+      <div>value: { props.value }</div>
+      <button onClick={ props.increment}>+1</button>
+      <button onClick={ props.decrement}>-1</button>
 
     </React.Fragment>
+
     )
   }
 }
+const mapStateToProps = state => ({ value: state.count.value })
+//  const mapDispatchToProps = dispatch => ({
+//    increment: ()=> dispatch(increment()),
+//    decrement: () => dispatch(decrement())
+//  })
 
+ const mapDispatchToProps = ({ increment, decrement })
 export default App;
 
 // }
